@@ -3,6 +3,7 @@ export interface Comment {
   content: string
   articleId: number
   authorId: number
+  author?: { id: number; name: string }
   createdAt: string
 }
 
