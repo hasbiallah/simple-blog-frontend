@@ -8,6 +8,7 @@ import RegisterPage from '@/features/auth/pages/RegisterPage'
 import DashboardPage from '@/features/articles/pages/DashboardPage'
 import CreateArticlePage from '@/features/articles/pages/CreateArticlePage'
 import EditArticlePage from '@/features/articles/pages/EditArticlePage'
+import NotFoundPage from '@/shared/components/NotFoundPage'
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ export const router = createBrowserRouter([
           { path: 'articles/:id/edit', element: <EditArticlePage /> },
         ],
       },
+      { path: '*', element: <NotFoundPage /> },
     ],
   },
 ])
