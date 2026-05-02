@@ -10,7 +10,7 @@ interface CommentListProps {
 }
 
 export default function CommentList({
-  comments,
+  comments = [],
   isLoading,
   error,
   onDelete,
@@ -27,7 +27,7 @@ export default function CommentList({
     return <p className="text-sm text-red-500">{error}</p>
   }
 
-  if (comments.length === 0) {
+  if (!comments || comments.length === 0) {
     return (
       <p className="text-sm text-gray-500">
         Belum ada komentar. Jadilah yang pertama!

@@ -53,7 +53,10 @@ export function useComments(articleId: number) {
       .get<Comment[]>(`/articles/${articleId}/comments`)
       .then((response) => {
         if (!cancelled) {
-          dispatch({ type: 'FETCH_SUCCESS', comments: response.data })
+          const comments = Array.isArray(response.data)
+            ? response.data
+            : (Array.isArray((response.data as any).data) ? (response.data as any).data : [])
+          dispatch({ type: 'FETCH_SUCCESS', comments })
         }
       })
       .catch((err: unknown) => {

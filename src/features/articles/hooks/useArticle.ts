@@ -46,7 +46,8 @@ export function useArticle(id: number) {
       .get<Article>(`/articles/${id}`)
       .then((response) => {
         if (!cancelled) {
-          dispatch({ type: 'FETCH_SUCCESS', article: response.data })
+          const article = (response.data as any).data || response.data
+          dispatch({ type: 'FETCH_SUCCESS', article })
         }
       })
       .catch((err) => {

@@ -9,8 +9,8 @@ interface ArticleTableProps {
   onDeleteClick: (article: Article) => void
 }
 
-export default function ArticleTable({ articles, onDeleteClick }: ArticleTableProps) {
-  if (articles.length === 0) {
+export default function ArticleTable({ articles = [], onDeleteClick }: ArticleTableProps) {
+  if (!articles || articles.length === 0) {
     return (
       <div className="text-center py-16 text-gray-500">
         <p className="mb-4">Kamu belum punya artikel. Buat sekarang!</p>

@@ -43,10 +43,21 @@ export function useArticles(page = 1, limit = 8) {
       .get<ArticlesResponse>(`/articles?page=${page}&limit=${limit}`)
       .then((response) => {
         if (!cancelled) {
+          const articles = Array.isArray(response.data.data) 
+            ? response.data.data 
+            : (Array.isArray(response.data) ? response.data : [])
+          
+          const meta = response.data.meta || {
+            total: articles.length,
+            page: page,
+            limit: limit,
+            totalPages: Math.ceil(articles.length / limit)
+          }
+
           dispatch({
             type: 'FETCH_SUCCESS',
-            articles: response.data.data,
-            meta: response.data.meta,
+            articles,
+            meta,
           })
         }
       })

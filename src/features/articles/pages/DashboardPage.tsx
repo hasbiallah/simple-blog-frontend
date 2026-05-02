@@ -19,7 +19,7 @@ export default function DashboardPage() {
   const [isDeleting, setIsDeleting] = useState(false)
   const [deleteError, setDeleteError] = useState<string | null>(null)
 
-  const articles = fetchedArticles.filter((a) => !deletedIds.has(a.id))
+  const articles = (fetchedArticles || []).filter((a) => !deletedIds.has(a.id))
 
   function handleDeleteClick(article: Article) {
     setDeleteTarget(article)

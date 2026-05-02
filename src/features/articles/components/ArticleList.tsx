@@ -5,8 +5,8 @@ interface ArticleListProps {
   articles: Article[]
 }
 
-export default function ArticleList({ articles }: ArticleListProps) {
-  if (articles.length === 0) {
+export default function ArticleList({ articles = [] }: ArticleListProps) {
+  if (!articles || articles.length === 0) {
     return (
       <p className="text-center text-gray-500 py-12">
         Belum ada artikel yang dipublikasikan.
